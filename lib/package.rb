@@ -10,9 +10,7 @@ class Package
   end
 
   def final_price()
-
      (@price * (1 + add_category_markup + add_labour_markup)).round(2)
-
   end
 
   def add_labour_markup()
@@ -25,7 +23,7 @@ class Package
     category_markup = 0
     @categories.each { |category|
       category_markup += case category
-          when 'drugs' then 0.075
+          when 'pharmacuticals' then 0.075
           when 'electronics' then 0.02
           when 'food' then 0.13
           else 0
