@@ -3,19 +3,26 @@ require "package"
 
 
 describe Package do
-  before (:each) do
-    @package = Package.new
-    @package.base_price = 1299.99
-    @package.base_markup = 1364.99
-  end
+
+ it('should return total markup') do
+      @price = Package.new(
+        {
+          price: 1299.99,
+          labour: 3,
+          categories: ['food']
+        }
+      )
+
+      expect(@price.final_price).to eq(1591.58)
+    end
+
+
   # it "has base markup" do
   #   @package = Package.new
   #   @package.base_price = 1299.99
   #   expect(@package.base_markup).to eq(1364.99)
   # end
-  it "calculates a final price " do
-       expect(@package.add_category(2, "Food")).to eq(1870.04)
-    end
+
   # context "category" do
   #   it "adds 13% markup to food" do
   #     expect(@package.category("Food")).to eq(1542.44)

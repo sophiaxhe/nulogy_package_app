@@ -1,31 +1,37 @@
 class Package
-  attr_accessor :base_price, :base_markup
+  attr_reader :total_markup
+  attr_accessor :price, :people, :categories
 
-  def initialize(options={})
-    self.base_price = options[:base_price]
+  def initialize(params={})
+    @price = params[:price] * 1.05
+    @categories = params[:categories]
+    @labour = params[:labour]
+    @total_markup = 0
   end
 
-  def add_base_markup
-    (self.base_price*1.05).round(2)
+  def final_price()
+
+     (@price * (1 + add_category_markup + add_labour_markup)).round(2)
+
+  end
+
+  def add_labour_markup()
+    @labour * 0.012
   end
 
 
-  def add_category(num, *args)
-    args.each { |c|
-    if
-      c == "Food"
-      return (self.base_markup * (1.13 + (num * 0.12))).round(2)
-    elsif
-      c == "Pharmacuticals"
-      return (self.base_markup * (1.075 + (num * 0.12))).round(2)
-    elsif
-       c == "Electronics"
-      return (self.base_markup * (1.02 + (num * 0.12))).round(2)
-    else
-      c == "Others"
-      return (self.base_markup * (1 + (num * 0.12))).round(2)
-    end
+  def add_category_markup()
+
+    category_markup = 0
+    @categories.each { |category|
+      category_markup += case category
+          when 'drugs' then 0.075
+          when 'electronics' then 0.02
+          when 'food' then 0.13
+          else 0
+        end
     }
+    category_markup
   end
-  
+
 end
