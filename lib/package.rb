@@ -6,24 +6,26 @@ class Package
   end
 
   def add_base_markup
-    (self.base_price * 1.05).round(2)
+    (self.base_price*1.05).round(2)
   end
 
-  def add_category(*args)
+
+  def add_category(num, *args)
     args.each { |c|
-    if c == "Food"
-      return (self.base_markup * 1.13).round(2)
-    end
-    if c == "Pharmacuticals"
-      return (self.base_markup * 1.075).round(2)
-    end
-    if c == "Electronics"
-      return (self.base_markup * 1.02).round(2)
-    end
-    if c == "Others"
-      return (self.base_markup).round(2)
+    if
+      c == "Food"
+      return (self.base_markup * (1.13 + (num * 0.12))).round(2)
+    elsif
+      c == "Pharmacuticals"
+      return (self.base_markup * (1.075 + (num * 0.12))).round(2)
+    elsif
+       c == "Electronics"
+      return (self.base_markup * (1.02 + (num * 0.12))).round(2)
+    else
+      c == "Others"
+      return (self.base_markup * (1 + (num * 0.12))).round(2)
     end
     }
   end
-
+  
 end
