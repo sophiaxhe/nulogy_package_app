@@ -1,3 +1,3 @@
-runtime version: Ruby 2.3.1  /br
-to install dependencies: bundle install  
+runtime version: Ruby 2.3.1                                                        
+to install dependencies: bundle install                                                                 
 run the test: in command line rspec spec/lib/package_spec.rb
