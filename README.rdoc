@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 * Runtime version: Ruby 2.3.1
 
